@@ -1,0 +1,35 @@
+﻿namespace Pd2TradeApi.Server.Models.DTOs.Shared
+{
+    public enum ItemCategoryList {
+        BodyArmor,
+        Boots,
+        Gloves,
+        Belts,
+        Helmets,
+        BarbarianHelms,
+        DruidPelts,
+        ShrunkenHeads,
+        Shields,
+        PaladinShields,
+        Axe,
+        Bow,
+        Crossbow,
+        Dagger,
+        Javelins,
+        Maxes,
+        Polearms,
+        Scepters,
+        Spears,
+        Staves,
+        Swords,
+        Throwing,
+        Wands,
+        Gems,
+        Runes,
+        Charms,
+        Jewels,
+        Scrolls,
+        Tomes,
+        Potions
+    }
+}

@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Pd2TradeApi.Server.Models</RootNamespace>
+    <Configurations>Debug;Release;Staging</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Staging|AnyCPU'">
+    <DefineConstants>TRACE;STAGING</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DTOs\AccountCredential\**" />
+    <Compile Remove="DTOs\OrderHistory\**" />
+    <Compile Remove="DTOs\VendorChannel\**" />
+    <EmbeddedResource Remove="DTOs\AccountCredential\**" />
+    <EmbeddedResource Remove="DTOs\OrderHistory\**" />
+    <EmbeddedResource Remove="DTOs\VendorChannel\**" />
+    <None Remove="DTOs\AccountCredential\**" />
+    <None Remove="DTOs\OrderHistory\**" />
+    <None Remove="DTOs\VendorChannel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.7.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="DTOs\Item\" />
+    <Folder Include="DTOs\Item\Request\" />
+    <Folder Include="DTOs\Item\Response\" />
+    <Folder Include="DTOs\TradeOffer\" />
+    <Folder Include="DTOs\TradeOffer\Request\" />
+    <Folder Include="DTOs\TradeOffer\Response\" />
+    <Folder Include="DTOs\User\Request\" />
+    <Folder Include="DTOs\User\Response\" />
+  </ItemGroup>
+</Project>
