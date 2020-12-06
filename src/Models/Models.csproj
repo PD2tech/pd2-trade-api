@@ -44,5 +44,8 @@
     <Folder Include="DTOs\TradeOffer\Response\" />
     <Folder Include="DTOs\User\Request\" />
     <Folder Include="DTOs\User\Response\" />
+    <Folder Include="DTOs\Runeword\" />
+    <Folder Include="DTOs\Runeword\Response\" />
+    <Folder Include="DTOs\Runeword\Request\" />
   </ItemGroup>
 </Project>
