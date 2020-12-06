@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Pd2TradeApi.Server.Lib.Extensions;
 using Pd2TradeApi.Server.Models.DatabaseModels;
+using Pd2TradeApi.Server.Models.DTOs.Shared;
 using Pd2TradeApi.Server.Services.Interfaces;
 
 namespace ChicksGold.Server.Api.Controllers
@@ -20,20 +22,20 @@ namespace ChicksGold.Server.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(TradeOffer), 200)]
-        [Authorize]
+        [Authorize(Policy = nameof(AuthorizationPolicyType.CreateTradeOffer))]
         public async Task<IActionResult> CreateTradeOffer(CreateTradeOfferRequest tradeOffer)
         {
-            await _tradeOfferService.CreateTradeOffer(tradeOffer);
+            await _tradeOfferService.CreateTradeOffer(tradeOffer, User.GetId());
 
             return Ok(tradeOffer);
         }
 
         [HttpPut]
         [ProducesResponseType(typeof(TradeOffer), 200)]
-        [Authorize]
+        [Authorize(Policy = nameof(AuthorizationPolicyType.CreateTradeOffer))]
         public async Task<IActionResult> UpdateTradeOffer(UpdateTradeOfferRequest tradeOffer)
         {
-            await _tradeOfferService.UpdateTradeOffer(tradeOffer);
+            await _tradeOfferService.UpdateTradeOffer(tradeOffer, User.GetId());
             return Ok(tradeOffer);
         }
 

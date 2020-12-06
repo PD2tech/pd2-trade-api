@@ -17,6 +17,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public long? WantedItemId { get; set; }
         public Item WantedItem {get; set;}
         public List<ItemStatTradeOffer> ItemStats {get; set;}
+        public long PosterId { get; set; }
         public User Poster { get; set; }
     }
 }

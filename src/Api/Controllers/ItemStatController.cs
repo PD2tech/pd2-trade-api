@@ -21,6 +21,7 @@ namespace ChicksGold.Server.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(ItemStatResponse), 200)]
+        [Authorize(Policy = nameof(AuthorizationPolicyType.CreateItemStat))]
         public async Task<IActionResult> CreateItemStat(CreateItemStatRequest itemStat)
         {
             await _itemStatService.CreateItemStat(itemStat);

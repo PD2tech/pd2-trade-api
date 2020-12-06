@@ -11,8 +11,8 @@ namespace Pd2TradeApi.Server.Services.Interfaces
         Task<List<TradeOfferResponse>> SearchTradeOffers(string expression, string orderByExpression);
         Task<TradeOfferResponse> FindTradeOffer(string expression);
         Task<TradeOfferResponse> GetById(long id);
-        Task<TradeOfferResponse> CreateTradeOffer(CreateTradeOfferRequest tradeOffer);
-        Task<TradeOfferResponse> UpdateTradeOffer(UpdateTradeOfferRequest tradeOffer);
+        Task<TradeOfferResponse> CreateTradeOffer(CreateTradeOfferRequest tradeOffer, long userId);
+        Task<TradeOfferResponse> UpdateTradeOffer(UpdateTradeOfferRequest tradeOffer, long userId);
         Task<bool> DeleteTradeOffer(long id);
     }
 }
