@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Pd2TradeApi.Server.Models.Abstracts;
 
-namespace Pd2TradeApi.Server.Models.DTOs.ItemStat.Request
+namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
 {
     public class ItemResponse : BaseEntity
     {

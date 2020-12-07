@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pd2TradeApi.Server.Models.DatabaseModels;
+using Pd2TradeApi.Server.Models.DTOs.Item.Request;
 using Pd2TradeApi.Server.Models.DTOs.ItemStat.Request;
 using Pd2TradeApi.Server.Models.DTOs.Shared;
 using Pd2TradeApi.Server.Services.Interfaces;

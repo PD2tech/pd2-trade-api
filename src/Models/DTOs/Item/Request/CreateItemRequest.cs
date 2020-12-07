@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pd2TradeApi.Server.Models.DTOs.ItemStat.Request
+namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
 {
     public class CreateItemRequest
     {

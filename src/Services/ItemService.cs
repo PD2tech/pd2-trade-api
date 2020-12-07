@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Pd2TradeApi.Server.Data.Interfaces;
 using Pd2TradeApi.Server.Models.DatabaseModels;
-using Pd2TradeApi.Server.Models.DTOs.ItemStat.Request;
+using Pd2TradeApi.Server.Models.DTOs.Item.Request;
 using Pd2TradeApi.Server.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;

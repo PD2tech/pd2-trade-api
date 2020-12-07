@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Pd2TradeApi.Server.Models.DTOs.ItemStat.Request;
+using Pd2TradeApi.Server.Models.DTOs.Item.Request;
 
 namespace Pd2TradeApi.Server.Services.Interfaces
 {
