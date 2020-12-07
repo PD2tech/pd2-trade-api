@@ -18,6 +18,7 @@ namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
         public bool? IsCurrency { get; set; }
         public string Type { get; set; }
         public string Category { get; set; }
+        public string SubCategory { get; set; }
         public int RuneRarity { get; set; }
         public int ItemLevel { get; set; }
         public string ImagePath { get; set; }
