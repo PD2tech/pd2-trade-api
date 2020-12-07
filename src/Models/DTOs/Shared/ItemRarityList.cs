@@ -9,7 +9,7 @@ namespace Pd2TradeApi.Server.Models.DTOs.Shared
     public enum ItemRarityList {
         Normal,
         Magic,
-        Rate,
+        Rare,
         Crafted,
         Set,
         Unique
