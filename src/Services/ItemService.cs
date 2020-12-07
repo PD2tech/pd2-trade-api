@@ -55,6 +55,30 @@ namespace Pd2TradeApi.Server.Services
             return _mapper.Map<ItemResponse>(item);
         }
 
+        public async Task<List<ItemResponse>> CreateOrUpdateItems(List<CreateItemRequest> createItemsRequest)
+        {
+            var itemsToUpdate = new List<CreateItemRequest>();
+            var itemsToCreate = new List<CreateItemRequest>();
+            var allItems = await _itemRepository.AllAsync();
+            foreach (var item in createItemsRequest)
+            {
+                Item foundItemStat = allItems.Find(x => x.Code == item.Code);
+                if (foundItemStat != null)
+                {
+                    item.Id = foundItemStat.Id;
+                    itemsToUpdate.Add(item);
+                }
+                else
+                {
+                    itemsToCreate.Add(item);
+                }
+            }
+            await _itemRepository.AddMultipleAsync(_mapper.Map<List<Item>>(itemsToCreate));
+            await _itemRepository.BulkUpdate(_mapper.Map<List<Item>>(itemsToUpdate));
+
+            return _mapper.Map<List<ItemResponse>>(createItemsRequest);
+        }
+
         public async Task<bool> DeleteItem(long id)
         {
             return await _itemRepository.DeleteAsync(id);

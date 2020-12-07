@@ -12,6 +12,7 @@ namespace Pd2TradeApi.Server.Services.Interfaces
         Task<ItemResponse> GetById(long id);
         Task<ItemResponse> CreateItem(CreateItemRequest item);
         Task<ItemResponse> UpdateItem(UpdateItemRequest item);
+        Task<List<ItemResponse>> CreateOrUpdateItems(List<CreateItemRequest> createItemsRequest);
         Task<bool> DeleteItem(long id);
     }
 }

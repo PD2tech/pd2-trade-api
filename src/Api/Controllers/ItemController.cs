@@ -45,6 +45,16 @@ namespace ChicksGold.Server.Api.Controllers
             return Ok(item);
         }
 
+        [HttpPost("Bulk")]
+        [ProducesResponseType(typeof(List<ItemResponse>), 200)]
+        [Authorize(Policy = nameof(AuthorizationPolicyType.CreateItem))]
+        public async Task<IActionResult> CreateItemStats(List<CreateItemRequest> items)
+        {
+            await _itemService.CreateOrUpdateItems(items);
+
+            return Ok(items);
+        }
+
         [HttpPut]
         [ProducesResponseType(typeof(Item), 200)]
         [Authorize(Policy = nameof(AuthorizationPolicyType.EditItem))]
