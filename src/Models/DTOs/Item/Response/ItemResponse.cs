@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pd2TradeApi.Server.Models.Abstracts;
 
 namespace Pd2TradeApi.Server.Models.DTOs.ItemStat.Request
 {
-    public class UpdateItemRequest
+    public class ItemResponse : BaseEntity
     {
-        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
         public int? StrengthRequirement { get; set; }
         public int? DexterityRequirement { get; set; }
         public int? LevelRequirement { get; set; }

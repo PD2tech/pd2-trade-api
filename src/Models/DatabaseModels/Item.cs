@@ -8,6 +8,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
     public class Item : BaseEntity
     {
         public string Name { get; set; }
+        public string Code { get; set; }
         public int? StrengthRequirement { get; set; }
         public int? DexterityRequirement { get; set; }
         public int? LevelRequirement { get; set; }

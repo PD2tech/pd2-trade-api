@@ -9,6 +9,8 @@ namespace Pd2TradeApi.Server.Models.DTOs.ItemStat.Request
     public class CreateItemRequest
     {
         public long? Id {get; set;}
+        public string Name { get; set; }
+        public string Code { get; set; }
         public int? StrengthRequirement { get; set; }
         public int? DexterityRequirement { get; set; }
         public int? LevelRequirement { get; set; }
