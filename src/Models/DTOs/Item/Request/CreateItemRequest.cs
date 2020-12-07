@@ -20,5 +20,11 @@ namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
         public int RuneRarity { get; set; }
         public int ItemLevel { get; set; }
         public string ImagePath { get; set; }
+        public long TotalSockets { get; set; }
+        public int Durability { get; set; }
+        public int MaxDurability { get; set; }
+        public int MinDamage { get; set; }
+        public int MaxDamage { get; set; }
+        public bool Corrupted { get; set; }
     }
 }
