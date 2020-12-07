@@ -678,13 +678,13 @@ namespace Pd2TradeApi.Server.Models.DTOs.Shared
             ItemCategoryList.Gem,
             new List<string>
             {
-                "Amethyst",
-                "Diamond",
-                "Emerald",
-                "Ruby",
-                "Sapphire",
-                "Topaz",
-                "Skull"
+                "Perfect Amethyst",
+                "Perfect Diamond",
+                "Perfect Emerald",
+                "Perfect Ruby",
+                "Perfect Sapphire",
+                "Perfect Topaz",
+                "Perfect Skull"
             }
         },
         {
@@ -768,9 +768,18 @@ namespace Pd2TradeApi.Server.Models.DTOs.Shared
             ItemCategoryList.Potion,
             new List<string>
             {
-                "Cap",
-                "Cap",
-                "Cap",
+                "Super Healing",
+                "Super Mana",
+                "Full Rejuvination",
+                "Antidote",
+                "Thawing",
+                "Stamina",
+                "Fuminating",
+                "Exploding",
+                "Oil",
+                "Strangling Gas",
+                "Choking Gas",
+                "Rancid Gas"
             }
         }
     };

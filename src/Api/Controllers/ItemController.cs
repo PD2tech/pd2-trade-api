@@ -29,6 +29,18 @@ namespace ChicksGold.Server.Api.Controllers
             return Ok(Enum.GetNames(typeof(ItemCategoryList)));
         }
 
+        [HttpGet("SubCategory")]
+        [ProducesResponseType(typeof(List<string>), 200)]
+        public async Task<IActionResult> GetItemCategories(string category)
+        {
+            if (category == null)
+            {
+                return BadRequest("Category is required");
+            }
+            var enumValue = (ItemCategoryList) Enum.Parse(typeof(ItemCategoryList), category);
+            return Ok(ItemSubcategoryList.ItemSubCategoryList[enumValue]);
+        }
+
         [HttpGet("Rarities")]
         [ProducesResponseType(typeof(List<string>), 200)]
         public async Task<IActionResult> GetItemRarities()
@@ -37,7 +49,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Item), 200)]
+        [ProducesResponseType(typeof(ItemResponse), 200)]
         [Authorize(Policy = nameof(AuthorizationPolicyType.CreateItem))]
         public async Task<IActionResult> CreateItem(CreateItemRequest item)
         {
