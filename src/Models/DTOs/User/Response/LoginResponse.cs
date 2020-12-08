@@ -6,6 +6,7 @@ namespace Pd2TradeApi.Server.Models.DTOs.User.Response {
     public class LoginResponse {
         public string Token { get; set; }
         public long Id { get; set; }
+        public string AccountName { get; set; }
         public long ExpiresAt { get; set; }
         public bool ResetPassword { get; set; }
         public bool TokenRequired { get; set; }

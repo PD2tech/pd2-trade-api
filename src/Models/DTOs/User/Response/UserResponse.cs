@@ -9,6 +9,5 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public string AccountName { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public List<TradeOffer> Offers { get; set; }
     }
 }

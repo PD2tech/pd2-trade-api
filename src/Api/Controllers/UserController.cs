@@ -46,7 +46,7 @@ namespace Pd2TradeApi.Server.Api.Controllers
             {
                 return BadRequest("Email Required");
             }
-            user.Ip = User.GetIp(Request?.Headers, HttpContext);
+
             var loginResponse = await _userService.CreateUser(user);
 
             if (loginResponse == null)

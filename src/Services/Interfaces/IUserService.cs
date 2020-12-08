@@ -10,7 +10,7 @@ namespace Pd2TradeApi.Server.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<LoginResponse> Authenticate(string username, string password, string token, string ip, bool isAdmin = false);
+        Task<LoginResponse> Authenticate(string username, string password, string token, bool isAdmin = false);
         Task<LoginResponse> CreateUser(RegisterUserDto user);
         Task<UserResponse> GetById(long id);
         Task<bool> CheckEmail(string email);

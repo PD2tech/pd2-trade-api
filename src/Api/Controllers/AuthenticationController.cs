@@ -27,9 +27,8 @@ namespace Pd2TradeApi.Server.Api.Controllers
         [ProducesResponseType(typeof(LoginResponse), 200)]
         public async Task<IActionResult> Login(RegisterUserDto loginRequest)
         {
-            loginRequest.Ip = User.GetIp(Request?.Headers, HttpContext);
             Request.Headers.TryGetValue("Origin", out var originValues);
-            var loginResponse = await _userService.Authenticate(loginRequest.Email, loginRequest.Password, loginRequest.Token, loginRequest.Ip, originValues.Any(x => x.Contains("admin.Pd2TradeApi.com") || x.Contains("qa-admin.Pd2TradeApi.com")));
+            var loginResponse = await _userService.Authenticate(loginRequest.Email, loginRequest.Password, loginRequest.Token, originValues.Any(x => x.Contains("admin.Pd2TradeApi.com") || x.Contains("qa-admin.Pd2TradeApi.com")));
             if (loginResponse == null)
             {
                 throw new InvalidCredentialException("Invalid Email or Password");
@@ -45,7 +44,6 @@ namespace Pd2TradeApi.Server.Api.Controllers
         {
             var userId = User.GetId();
             var user = await _userService.GetProfile(userId);
-
             return Ok(user);
         }
 

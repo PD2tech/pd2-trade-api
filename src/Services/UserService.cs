@@ -40,7 +40,7 @@ namespace Pd2TradeApi.Server.Services
             _mapper = mapper;
         }
 
-        public async Task<LoginResponse> Authenticate(string email, string password, string token, string ip, bool isAdmin = false)
+        public async Task<LoginResponse> Authenticate(string email, string password, string token, bool isAdmin = false)
         {
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
                 return null;
@@ -138,7 +138,7 @@ namespace Pd2TradeApi.Server.Services
             user.Email = registerUser.Email;
 
             await _userRepo.CreateAsync(user, registerUser.Password);
-            return await Authenticate(registerUser.Email, registerUser.Password, null, registerUser.Ip);
+            return await Authenticate(registerUser.Email, registerUser.Password, null);
         }
 
         public async Task<UserResponse> FindByEmail(RequestResetPasswordRequest data)

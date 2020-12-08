@@ -8,7 +8,6 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
     [Table("TradeOffer")]
     public class TradeOffer : BaseEntity
     {
-        public string ItemName { get; set; }
         public float? Cost { get; set; }
         public string AccountName { get; set; }
         public string Note { get; set; }
