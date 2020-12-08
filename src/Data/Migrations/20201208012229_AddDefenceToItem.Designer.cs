@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pd2TradeApi.Server.Data;
 
 namespace Pd2TradeApi.Server.Data.Migrations
 {
     [DbContext(typeof(Pd2TradeApiDbContext))]
-    partial class Pd2TradeApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201208012229_AddDefenceToItem")]
+    partial class AddDefenceToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

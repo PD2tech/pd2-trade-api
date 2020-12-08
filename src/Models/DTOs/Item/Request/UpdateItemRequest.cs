@@ -29,5 +29,6 @@ namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
         public int MinDamage { get; set; }
         public int MaxDamage { get; set; }
         public bool Corrupted { get; set; }
+        public int Defence { get; set; }
     }
 }
