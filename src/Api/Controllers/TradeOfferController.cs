@@ -56,6 +56,14 @@ namespace ChicksGold.Server.Api.Controllers
             return Ok(await _tradeOfferService.GetTradeOffers());
         }
 
+
+        [HttpGet("Filter")]
+        [ProducesResponseType(typeof(List<TradeOffer>), 200)]
+        public async Task<IActionResult> FilterTradeOffers(FilterTradeOffersRequest filterRequest)
+        {
+            return Ok(await _tradeOfferService.GetTradeOffers());
+        }
+
         [HttpGet("Find")]
         [ProducesResponseType(typeof(TradeOffer), 200)]
         public async Task<IActionResult> FindTradeOffer(string expression)

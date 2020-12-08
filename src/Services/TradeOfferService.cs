@@ -33,7 +33,7 @@ namespace Pd2TradeApi.Server.Services
 
         public async Task<List<TradeOfferResponse>> GetTradeOffers()
         {
-            var response = await _tradeOfferRepository.AllAsync();
+            var response = await _tradeOfferRepository.GetLatestTradeOffers();
             return _mapper.Map<List<TradeOfferResponse>>(response);
         }
 
@@ -43,11 +43,19 @@ namespace Pd2TradeApi.Server.Services
             return _mapper.Map<TradeOfferResponse>(response);
         }
 
+        public async Task<TradeOfferResponse> FiterTradeOffers(FilterTradeOffersRequest filterRequest)
+        {
+            var response = await _tradeOfferRepository.FilterTradeOffers(filterRequest);
+            return _mapper.Map<TradeOfferResponse>(response);
+        }
+
         public async Task<TradeOfferResponse> CreateTradeOffer(CreateTradeOfferRequest tradeOffer, long userId)
         {
             var tradeOfferToCreate = _mapper.Map<TradeOffer>(tradeOffer);
             tradeOfferToCreate.PosterId = userId;
             //TODO: Create bridging table records
+
+            //TODO: Create any rare items that are needed - Socket items or just the single rare
             await _tradeOfferRepository.AddAsync(tradeOfferToCreate);
             return _mapper.Map<TradeOfferResponse>(tradeOffer);
         }
