@@ -57,7 +57,7 @@ namespace Pd2TradeApi.Server.Services
             var allItemStates = await _itemStatRepository.AllAsync();
             foreach (var itemStat in createItemStatsRequest)
             {
-                ItemStat foundItemStat = allItemStates.Find(x => x.Code == itemStat.Code);
+                ItemStat foundItemStat = allItemStates.Find(x => x.Code == itemStat.Code && x.DisplayName == itemStat.DisplayName && x.Name == itemStat.Name);
                 if (foundItemStat != null)
                 {
                     itemStat.Id = foundItemStat.Id;

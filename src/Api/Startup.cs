@@ -146,7 +146,7 @@ namespace Pd2TradeApi.Server.Api
             });
 
             //app.UseMiddleware<CheckLoginIpMiddleware>();
-            app.UseMiddleware<ErrorHandlingMiddleware>();
+            //app.UseMiddleware<ErrorHandlingMiddleware>();
             
 
             app.UseEndpoints(endpoints =>

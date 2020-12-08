@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,14 @@ namespace ChicksGold.Server.Api.Controllers
             }
             var enumValue = (ItemCategoryList) Enum.Parse(typeof(ItemCategoryList), category);
             return Ok(ItemSubcategoryList.ItemSubCategoryList[enumValue]);
+        }
+
+        [HttpGet("FindItemCategory")]
+        [ProducesResponseType(typeof(List<string>), 200)]
+        public async Task<IActionResult> FindItemCategory(string itemSubCategory)
+        {
+            var found = ItemSubcategoryList.ItemSubCategoryList.Where(x => x.Value.Contains(itemSubCategory)).SingleOrDefault().Key;
+            return Ok(found.ToString());
         }
 
         [HttpGet("Rarities")]
