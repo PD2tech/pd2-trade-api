@@ -7,10 +7,7 @@
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string CharacterName {get; set;}
+        public string AccountName { get; set; }
         public string Token { get; set; }
-        public bool OptedInForEmails { get; set; }
-        public string Ip { get; set; }
-        public string WebsiteShortCode { get; set; }
     }
 }
