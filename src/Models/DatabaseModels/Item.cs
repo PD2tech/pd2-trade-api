@@ -13,6 +13,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public int? DexterityRequirement { get; set; }
         public int? LevelRequirement { get; set; }
         public bool? IsCurrency { get; set; }
+        public bool? IsSearchable { get; set; }
         public string Type { get; set; }
         public string Category { get; set; }
         public string SubCategory { get; set; }

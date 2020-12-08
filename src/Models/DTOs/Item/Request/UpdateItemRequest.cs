@@ -12,6 +12,7 @@ namespace Pd2TradeApi.Server.Models.DTOs.Item.Request
         public long Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
+        public bool? IsSearchable { get; set; }
         public int? StrengthRequirement { get; set; }
         public int? DexterityRequirement { get; set; }
         public int? LevelRequirement { get; set; }
