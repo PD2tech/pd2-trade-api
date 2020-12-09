@@ -6,7 +6,7 @@ using Pd2TradeApi.Server.Models.DatabaseModels;
 namespace Pd2TradeApi.Server.Data.Interfaces
 {
     public interface ITradeOfferRepository : IBaseRepository<TradeOffer> {
-        Task<List<TradeOffer>> GetLatestTradeOffers();
+        Task<List<Dto>> GetLatestTradeOffers<Dto>();
         Task<List<TradeOffer>> FilterTradeOffers(FilterTradeOffersRequest filterRequest);
     }
 }

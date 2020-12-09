@@ -17,17 +17,17 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public string Type { get; set; }
         public string Category { get; set; }
         public string SubCategory { get; set; }
-        public int RuneRarity { get; set; }
-        public int ItemLevel { get; set; }
+        public int? RuneRarity { get; set; }
+        public int? ItemLevel { get; set; }
         public string ImagePath { get; set; }
         public long TotalSockets { get; set; }
-        public int Durability { get; set; }
-        public int MaxDurability { get; set; }
-        public int MinDamage { get; set; }
-        public int MaxDamage { get; set; }
-        public bool Corrupted { get; set; }
+        public int? Durability { get; set; }
+        public int? MaxDurability { get; set; }
+        public int? MinDamage { get; set; }
+        public int? MaxDamage { get; set; }
+        public bool? Corrupted { get; set; }
         public int Defence { get; set; }
-        public List<ItemStat> ItemStats { get; set; }
+        public List<ItemItemStat> ItemStats { get; set; }
         public List<ItemSocket> Sockets { get; set; }
         public long? RunewordId { get; set; }
         public Runeword Runeword { get; set; }

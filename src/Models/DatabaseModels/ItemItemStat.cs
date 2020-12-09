@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Pd2TradeApi.Server.Models.DatabaseModels
 {
-    [Table("ItemItemStat")]
-    public class ItemItemStat
+    [Table("ItemStatTradeOffer")]
+    public class ItemStatTradeOffer
     {
-        public long ItemId {get; set;}
-        public Item Item {get; set;}
+        public long TradeOfferId {get; set;}
+        public TradeOffer TradeOffer {get; set;}
         public long ItemStatId {get; set;}
         public ItemStat ItemStat {get; set;}
+        public float Value {get; set;}
     }
 }

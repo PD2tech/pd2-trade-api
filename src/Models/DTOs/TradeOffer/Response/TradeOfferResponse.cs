@@ -13,6 +13,6 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public long OfferedItemId { get; set; }
         public ItemResponse OfferedItem { get; set; }
         public long WantedItemId { get; set; }
-        public ItemResponse WantedItem { get; set; }
+        public TradeOfferItemResponse WantedItem { get; set; }
     }
 }

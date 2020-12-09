@@ -19,9 +19,13 @@ namespace Pd2TradeApi.Server.Data.Repositories
             _mapper = mapper;
         }
 
-        public async Task<List<TradeOffer>> GetLatestTradeOffers()
+        public async Task<List<Dto>> GetLatestTradeOffers<Dto>()
         {
-            return await Table.OrderByDescending(x => x.UpdatedDate).Take(30).ToListAsync();
+            return await Table
+                .OrderByDescending(x => x.UpdatedDate)
+                .Take(30)
+                .ProjectTo<Dto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         public async Task<List<TradeOffer>> FilterTradeOffers(FilterTradeOffersRequest filterRequest)

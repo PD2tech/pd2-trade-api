@@ -14,17 +14,20 @@ namespace Pd2TradeApi.Server.Services
         private readonly IMapper _mapper;
         private readonly IItemStatTradeOfferRepository _itemStatTradeOfferRepository;
         private readonly IItemRepository _itemRepository;
+        private readonly IItemItemStatRepository _itemItemStatRepository;
 
         public TradeOfferService(
             ITradeOfferRepository tradeOfferRepository,
             IMapper mapper,
             IItemStatTradeOfferRepository itemStatTradeOfferRepository,
-            IItemRepository itemRepository)
+            IItemRepository itemRepository,
+            IItemItemStatRepository itemItemStatRepository)
         {
             _tradeOfferRepository = tradeOfferRepository;
             _mapper = mapper;
             _itemStatTradeOfferRepository = itemStatTradeOfferRepository;
             _itemRepository = itemRepository;
+            _itemItemStatRepository = itemItemStatRepository;
         }
 
         public async Task<TradeOfferResponse> FindTradeOffer(string expression)
@@ -41,8 +44,7 @@ namespace Pd2TradeApi.Server.Services
 
         public async Task<List<TradeOfferResponse>> GetTradeOffers()
         {
-            var response = await _tradeOfferRepository.GetLatestTradeOffers();
-            return _mapper.Map<List<TradeOfferResponse>>(response);
+            return await _tradeOfferRepository.GetLatestTradeOffers<TradeOfferResponse>();
         }
 
         public async Task<TradeOfferResponse> GetById(long id)
@@ -61,20 +63,32 @@ namespace Pd2TradeApi.Server.Services
         {
             var tradeOfferToCreate = _mapper.Map<TradeOffer>(tradeOffer);
             tradeOfferToCreate.PosterId = userId;
+
+            //if (tradeOffer.OfferedItemId == null)
+            //{
+            //    var itemToCreate = _mapper.Map<Item>(tradeOffer.OfferedItem);
+            //    await _itemRepository.AddAsync(itemToCreate);
+            //    tradeOfferToCreate.OfferedItemId = itemToCreate.Id;
+            //}
+
             await _tradeOfferRepository.AddAsync(tradeOfferToCreate);
 
-            if (tradeOffer.OfferedItemId == null)
-            {
-                var itemToCreate = _mapper.Map<Item>(tradeOffer.OfferedItem);
-                await _itemRepository.AddAsync(itemToCreate);
-                tradeOfferToCreate.OfferedItemId = itemToCreate.Id;
-            }
-
             var stats = new List<ItemStatTradeOffer>();
+            var itemStats = new List<ItemItemStat>();
             foreach (var stat in tradeOffer.OfferedItem.Stats)
             {
-                stats.Add(new ItemStatTradeOffer { ItemStatId = stat.Id, TradeOfferId = tradeOfferToCreate.Id });
+                stats.Add(new ItemStatTradeOffer {
+                    ItemStatId = stat.Id,
+                    TradeOfferId = tradeOfferToCreate.Id,
+                    Value = stat.Value
+                });
+                itemStats.Add(new ItemItemStat
+                {
+                    ItemStatId = stat.Id,
+                    ItemId = (long) tradeOfferToCreate.OfferedItemId
+                });
             }
+            await _itemItemStatRepository.AddMultipleAsync(itemStats);
             await _itemStatTradeOfferRepository.AddMultipleAsync(stats);
 
             await _tradeOfferRepository.UpdateAsync(tradeOfferToCreate.Id, tradeOfferToCreate);

@@ -12,6 +12,9 @@ namespace ChicksGold.Server.Api.Profiles
             CreateMap<Item, ItemResponse>().ReverseMap();
             CreateMap<Item, UpdateItemRequest>().ReverseMap();
             CreateMap<ItemResponse, CreateItemRequest>().ReverseMap();
+            CreateMap<Item, CreateItemFromTradeRequest>().ReverseMap();
+            CreateMap<Item, TradeOfferItemResponse>().ReverseMap();
+            CreateMap<ItemResponse, CreateItemFromTradeRequest>().ReverseMap();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
     {
         public float? Cost { get; set; }
         public string AccountName { get; set; }
+        public string Note { get; set; }
         public long? OfferedItemId { get; set; }
         public CreateItemFromTradeRequest OfferedItem { get; set; }
         public long WantedItemId { get; set; }

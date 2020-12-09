@@ -13,7 +13,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public string DisplayName { get; set; }
         public float? MinValue { get; set; }
         public float? MaxValue { get; set; }
-        public List<Item> Items { get; set; }
+        public List<ItemItemStat> Items { get; set; }
         public List<Runeword> Runewords { get; set; }
         public List<ItemStatTradeOffer> TradeOffers { get; set; }
     }

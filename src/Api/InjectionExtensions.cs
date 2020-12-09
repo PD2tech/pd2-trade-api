@@ -26,6 +26,7 @@ namespace Pd2TradeApi.Server.Lib.Extensions
             services.AddScoped<IItemSocketRepository, ItemSocketRepository>();
             services.AddScoped<IRunewordRepository, RunewordRepository>();
             services.AddScoped<IRunewordService, RunewordService>();
+            services.AddScoped<IItemItemStatRepository, ItemItemStatRepository>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<UserResolver>();
         }

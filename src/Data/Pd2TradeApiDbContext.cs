@@ -17,6 +17,7 @@ namespace Pd2TradeApi.Server.Data
         public DbSet<ItemStatTradeOffer> ItemStatsTradeOffers { get; set; }
         public DbSet<Runeword> Runewords { get; set; }
         public DbSet<ItemSocket> ItemSockets { get; set; }
+        public DbSet<ItemItemStat> ItemItemStats { get; set; }
 
         public Pd2TradeApiDbContext(DbContextOptions options) : base(options)
         {
@@ -36,6 +37,7 @@ namespace Pd2TradeApi.Server.Data
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ItemStatTradeOffersConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemItemStatConfiguration());
 
             //modelBuilder.Entity<UserNote>().HasQueryFilter(e => !e.IsDeleted);
 
