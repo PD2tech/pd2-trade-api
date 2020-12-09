@@ -10,6 +10,6 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public string Name { get; set; }
         public string Code { get; set; }
         public long SocketsNeeded { get; set; }
-        public List<ItemStat> Stats { get; set; }
+        public List<ItemStat> ItemStats { get; set; }
     }
 }

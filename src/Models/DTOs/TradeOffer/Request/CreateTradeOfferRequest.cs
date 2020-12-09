@@ -10,9 +10,8 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public float? Cost { get; set; }
         public string AccountName { get; set; }
         public long? OfferedItemId { get; set; }
-        public Item OfferedItem { get; set; }
+        public CreateItemFromTradeRequest OfferedItem { get; set; }
         public long WantedItemId { get; set; }
-        public Item WantedItem { get; set; }
         public List<CreateItemStatsWithTradeOfferRequest> ItemStats {get; set;}
     }
 }

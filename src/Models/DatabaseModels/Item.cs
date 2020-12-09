@@ -27,7 +27,7 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
         public int MaxDamage { get; set; }
         public bool Corrupted { get; set; }
         public int Defence { get; set; }
-        public List<ItemStat> DefaultStats { get; set; }
+        public List<ItemStat> ItemStats { get; set; }
         public List<ItemSocket> Sockets { get; set; }
         public long? RunewordId { get; set; }
         public Runeword Runeword { get; set; }

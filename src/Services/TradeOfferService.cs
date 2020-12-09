@@ -10,13 +10,21 @@ namespace Pd2TradeApi.Server.Services
 {
     public class TradeOfferService : ITradeOfferService
     {
-         private readonly ITradeOfferRepository _tradeOfferRepository;
+        private readonly ITradeOfferRepository _tradeOfferRepository;
         private readonly IMapper _mapper;
+        private readonly IItemStatTradeOfferRepository _itemStatTradeOfferRepository;
+        private readonly IItemRepository _itemRepository;
 
-        public TradeOfferService(ITradeOfferRepository tradeOfferRepository, IMapper mapper)
+        public TradeOfferService(
+            ITradeOfferRepository tradeOfferRepository,
+            IMapper mapper,
+            IItemStatTradeOfferRepository itemStatTradeOfferRepository,
+            IItemRepository itemRepository)
         {
             _tradeOfferRepository = tradeOfferRepository;
             _mapper = mapper;
+            _itemStatTradeOfferRepository = itemStatTradeOfferRepository;
+            _itemRepository = itemRepository;
         }
 
         public async Task<TradeOfferResponse> FindTradeOffer(string expression)
@@ -53,10 +61,23 @@ namespace Pd2TradeApi.Server.Services
         {
             var tradeOfferToCreate = _mapper.Map<TradeOffer>(tradeOffer);
             tradeOfferToCreate.PosterId = userId;
-            //TODO: Create bridging table records
-
-            //TODO: Create any rare items that are needed - Socket items or just the single rare
             await _tradeOfferRepository.AddAsync(tradeOfferToCreate);
+
+            if (tradeOffer.OfferedItemId == null)
+            {
+                var itemToCreate = _mapper.Map<Item>(tradeOffer.OfferedItem);
+                await _itemRepository.AddAsync(itemToCreate);
+                tradeOfferToCreate.OfferedItemId = itemToCreate.Id;
+            }
+
+            var stats = new List<ItemStatTradeOffer>();
+            foreach (var stat in tradeOffer.OfferedItem.Stats)
+            {
+                stats.Add(new ItemStatTradeOffer { ItemStatId = stat.Id, TradeOfferId = tradeOfferToCreate.Id });
+            }
+            await _itemStatTradeOfferRepository.AddMultipleAsync(stats);
+
+            await _tradeOfferRepository.UpdateAsync(tradeOfferToCreate.Id, tradeOfferToCreate);
             return _mapper.Map<TradeOfferResponse>(tradeOffer);
         }
 

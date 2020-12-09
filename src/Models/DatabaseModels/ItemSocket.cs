@@ -9,6 +9,5 @@ namespace Pd2TradeApi.Server.Models.DatabaseModels
     {
         public long ItemId { get; set; }
         public Item Item { get; set; }
-        public List<ItemStat> Stats { get; set; }
     }
 }
