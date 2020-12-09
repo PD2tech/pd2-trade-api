@@ -21,7 +21,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(TradeOffer), 200)]
+        [ProducesResponseType(typeof(TradeOfferResponse), 200)]
         [Authorize(Policy = nameof(AuthorizationPolicyType.CreateTradeOffer))]
         public async Task<IActionResult> CreateTradeOffer(CreateTradeOfferRequest tradeOffer)
         {
@@ -31,7 +31,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(TradeOffer), 200)]
+        [ProducesResponseType(typeof(TradeOfferResponse), 200)]
         [Authorize(Policy = nameof(AuthorizationPolicyType.CreateTradeOffer))]
         public async Task<IActionResult> UpdateTradeOffer(UpdateTradeOfferRequest tradeOffer)
         {
@@ -41,7 +41,7 @@ namespace ChicksGold.Server.Api.Controllers
 
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(TradeOffer), 200)]
+        [ProducesResponseType(typeof(TradeOfferResponse), 200)]
         public async Task<IActionResult> GetById(long id)
         {
             var post = await _tradeOfferService.GetById(id);
@@ -50,7 +50,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<TradeOffer>), 200)]
+        [ProducesResponseType(typeof(List<TradeOfferResponse>), 200)]
         public async Task<IActionResult> ListTradeOffers()
         {
             return Ok(await _tradeOfferService.GetTradeOffers());
@@ -58,21 +58,21 @@ namespace ChicksGold.Server.Api.Controllers
 
 
         [HttpGet("Filter")]
-        [ProducesResponseType(typeof(List<TradeOffer>), 200)]
+        [ProducesResponseType(typeof(List<TradeOfferResponse>), 200)]
         public async Task<IActionResult> FilterTradeOffers(FilterTradeOffersRequest filterRequest)
         {
             return Ok(await _tradeOfferService.GetTradeOffers());
         }
 
         [HttpGet("Find")]
-        [ProducesResponseType(typeof(TradeOffer), 200)]
+        [ProducesResponseType(typeof(TradeOfferResponse), 200)]
         public async Task<IActionResult> FindTradeOffer(string expression)
         {
             return Ok(await _tradeOfferService.FindTradeOffer(expression));
         }
 
         [HttpGet("Search")]
-        [ProducesResponseType(typeof(List<TradeOffer>), 200)]
+        [ProducesResponseType(typeof(List<TradeOfferResponse>), 200)]
         public async Task<IActionResult> SearchTradeOffers(string expression, string orderByExpression)
         {
             return Ok(await _tradeOfferService.SearchTradeOffers(expression, orderByExpression));

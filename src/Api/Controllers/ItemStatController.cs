@@ -31,6 +31,7 @@ namespace ChicksGold.Server.Api.Controllers
 
         [HttpPost("Bulk")]
         [ProducesResponseType(typeof(List<ItemStatResponse>), 200)]
+        [Authorize(Policy = nameof(AuthorizationPolicyType.CreateItemStat))]
         public async Task<IActionResult> CreateItemStats(List<CreateItemStatRequest> itemStats)
         {
             await _itemStatService.CreateOrUpdateItemStats(itemStats);

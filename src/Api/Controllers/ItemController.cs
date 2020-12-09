@@ -78,7 +78,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(Item), 200)]
+        [ProducesResponseType(typeof(ItemResponse), 200)]
         [Authorize(Policy = nameof(AuthorizationPolicyType.EditItem))]
         public async Task<IActionResult> UpdateItem(UpdateItemRequest item)
         {
@@ -89,7 +89,7 @@ namespace ChicksGold.Server.Api.Controllers
 
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Item), 200)]
+        [ProducesResponseType(typeof(ItemResponse), 200)]
         public async Task<IActionResult> GetById(long id)
         {
             var post = await _itemService.GetById(id);
@@ -98,7 +98,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<Item>), 200)]
+        [ProducesResponseType(typeof(List<ItemResponse>), 200)]
         public async Task<IActionResult> ListItems()
         {
             return Ok(await _itemService.GetItems());
@@ -112,7 +112,7 @@ namespace ChicksGold.Server.Api.Controllers
         }
 
         [HttpGet("Search")]
-        [ProducesResponseType(typeof(List<Item>), 200)]
+        [ProducesResponseType(typeof(List<ItemResponse>), 200)]
         public async Task<IActionResult> SearchItems(string expression, string orderByExpression)
         {
             return Ok(await _itemService.SearchItems(expression, orderByExpression));
